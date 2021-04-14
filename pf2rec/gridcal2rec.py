@@ -166,18 +166,36 @@ def _write_single_pf(grid, pf, model_name, data_dirs, pf_num, export_pf_results,
     trafos_result.write(f"record PF_Trafos_{extension_record}\n")
     trafos_result.write(f"extends {model_name}.PF_Data.Trafos_Data.Trafos_Template(\n\n")
 
-    for n_trafo, trafo in enumerate(pf.results.tap_module):
-        trafos_result.write("// TRAFO: '{}'\n".format(br_trafos_name[n_trafo]))
-        trafos_result.write("// From: '{}' - To: '{}'\n".format(br_trafos_from[n_trafo], br_trafos_to[n_trafo]))
-        trafos_result.write("t1_trafo_{n_traf} = {t:.7f},\n".format(n_traf = n_trafo + 1, t = pf.results.tap_module[n_trafo]))
-        if n_trafo == len(br_trafos_index) - 1:
-            trafos_result.write("t2_trafo_{n_traf} = 1.0000000\n\n".format(n_traf = n_trafo + 1))
-        else:
-            trafos_result.write("t2_trafo_{n_traf} = 1.0000000,\n\n".format(n_traf = n_trafo + 1))
+    try:
+        # Writing tap results for old GridCal versions
+        # An error will be raised on the 4.0.0 GridCal version
+        # since `tap_module` has been renamed as `transformer_tap_module`
+        for n_trafo, trafo in enumerate(pf.results.tap_module):
+            trafos_result.write("// TRAFO: '{}'\n".format(br_trafos_name[n_trafo]))
+            trafos_result.write("// From: '{}' - To: '{}'\n".format(br_trafos_from[n_trafo], br_trafos_to[n_trafo]))
+            trafos_result.write("t1_trafo_{n_traf} = {t:.7f},\n".format(n_traf = n_trafo + 1, t = pf.results.tap_module[n_trafo]))
+            if n_trafo == len(br_trafos_index) - 1:
+                trafos_result.write("t2_trafo_{n_traf} = 1.0000000\n\n".format(n_traf = n_trafo + 1))
+            else:
+                trafos_result.write("t2_trafo_{n_traf} = 1.0000000,\n\n".format(n_traf = n_trafo + 1))
 
-    trafos_result.write(");\n")
-    trafos_result.write(f"end PF_Trafos_{extension_record};")
-    trafos_result.close()
+        trafos_result.write(");\n")
+        trafos_result.write(f"end PF_Trafos_{extension_record};")
+        trafos_result.close()
+    except:
+        # Writing tap results for the latest 4.0.0 GridCal version
+        for n_trafo, trafo in enumerate(pf.results.transformer_tap_module):
+            trafos_result.write("// TRAFO: '{}'\n".format(br_trafos_name[n_trafo]))
+            trafos_result.write("// From: '{}' - To: '{}'\n".format(br_trafos_from[n_trafo], br_trafos_to[n_trafo]))
+            trafos_result.write("t1_trafo_{n_traf} = {t:.7f},\n".format(n_traf = n_trafo + 1, t = pf.results.transformer_tap_module[n_trafo]))
+            if n_trafo == len(br_trafos_index) - 1:
+                trafos_result.write("t2_trafo_{n_traf} = 1.0000000\n\n".format(n_traf = n_trafo + 1))
+            else:
+                trafos_result.write("t2_trafo_{n_traf} = 1.0000000,\n\n".format(n_traf = n_trafo + 1))
+
+        trafos_result.write(");\n")
+        trafos_result.write(f"end PF_Trafos_{extension_record};")
+        trafos_result.close()
 
     ############################################
     ### WRITING GENERATOR POWER FLOW DATA ######
