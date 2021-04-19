@@ -1,33 +1,3 @@
-SMIB Tutorial: OpenIPSL Model Assembly and Power Flow Integration with GridCal
-===================================
-
-**Authors:** Sergio A. Dorado-Rojas (sergio.dorado.rojas@gmail.com), Giuseppe Laera, Marcelo de Castro Fernandes and Luigi Vanfretti (luigi.vanfretti@gmail.com)
-
-**Accompanying Material:**
-
-- The slides of our tutorial can be found [here](https://docs.google.com/presentation/d/1EKeKHnyoLQeC1HwLtGGRk25ST2qX4dB5cxsqEz3dwW0/edit?usp=sharing).
-- A detailed step-by-step guideline for setting up the Single Machine Infinite Bus (SMIB) model can be checked [here](https://docs.google.com/document/d/1uB3e-KXT6zUqG7W-FEdlMiI31R2jPnAmmRVvjmAHoT8/edit?usp=sharing).
-
-``` (add as citation)
-This work has been submitted to the International Modelica Conference 2021
-```
-
-### Part 1: GridCal Installation inside a Miniconda Environment
-
-### Part 2: OpenIPSL Model Assembly
-
-### Part 3: Power Flow Records Creation and Integration
-
-(embed video)
-
-### Part 4: Power Flow Generation and Testing
-
-
-The code for the base case power flow generation is shown below:
-
-The code for the time series power flow example is provided below:
-
-```python
 from pf2rec import *
 from GridCal.Engine import *
 
@@ -86,4 +56,3 @@ for n_ts, _ in enumerate(grid.time_profile):
                 pf_num = n_ts + 1, export_pf_results = False,
                 is_time_series = True, ts_name = 'SMIB_Time_Series',
                 openipsl_version = '2.0.0')
-```
