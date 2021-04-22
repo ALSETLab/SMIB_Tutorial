@@ -9,20 +9,22 @@ from GridCal.Engine.Devices.shunt import Shunt
 from GridCal.Engine.Simulations.PowerFlow.time_series_driver import TimeSeries
 from GridCal.Engine.Simulations.PowerFlow.power_flow_driver import PowerFlowDriver
 
-MODEL = 'SMIB'
-
 import argparse
 import os
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--version", help = "OpenIPSL version for which the model has been created. Defaults to '1.5.0'")
+parser.add_argument("--model", help = "Name of the package containing the target OpenIPSL model. Defaults to `SMIB`")
+parser.add_argument("--version", help = "OpenIPSL version for which the model has been created. Defaults to `1.5.0`")
 
 args = parser.parse_args()
 
 if __name__ == '__main__':
 
-    _model = MODEL
+    if args.model:
+        _model = args.model
+    else:
+        _model = 'SMIB'
 
     if args.version:
         _version = args.version

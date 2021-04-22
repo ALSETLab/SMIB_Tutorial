@@ -3,17 +3,19 @@ from pf2rec import *
 import argparse
 import os
 
-MODEL = 'SMIB'
-
 parser = argparse.ArgumentParser()
 
+parser.add_argument("--model", help = "Name of the package containing the target OpenIPSL model. Defaults to `SMIB`")
 parser.add_argument("--version", help = "OpenIPSL version for which the model has been created. Defaults to '1.5.0'")
 
 args = parser.parse_args()
 
 if __name__ == '__main__':
 
-    _model = MODEL
+    if args.model:
+        _model = args.model
+    else:
+        _model = 'SMIB'
 
     if args.version:
         _version = args.version
