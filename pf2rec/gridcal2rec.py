@@ -185,7 +185,7 @@ def _write_single_pf(grid, pf, model_name, data_dirs, pf_num, export_pf_results,
         trafos_result.write(");\n")
         trafos_result.write(f"end PF_Trafos_{extension_record};")
         trafos_result.close()
-    elif re.search(r"4.\d.\d", __VERSION):
+    elif re.search(r"4.\d(.\d)*", __VERSION):
         # Writing tap results for the latest 4.0.0+ GridCal version
         for n_trafo, trafo in enumerate(pf.results.transformer_tap_module):
             trafos_result.write("// TRAFO: '{}'\n".format(br_trafos_name[n_trafo]))
@@ -219,7 +219,7 @@ def _write_single_pf(grid, pf, model_name, data_dirs, pf_num, export_pf_results,
         pf_S_bus_results["P [MW]"] = np.real(pf.results.Sbus * grid.Sbase)
         # Adding reactive power to the buses
         pf_S_bus_results["Q [MVAR]"] = np.imag(pf.results.Sbus * grid.Sbase)
-    elif re.search(r"4.\d.\d", __VERSION):
+    elif re.search(r"4.\d(.\d)*", __VERSION):
         # For version 4 of GridCal, power is already given in MW and MVar
         pf_S_bus_results["P [MW]"] = np.real(pf.results.Sbus)
         pf_S_bus_results["Q [MVAR]"] = np.imag(pf.results.Sbus)
@@ -348,7 +348,6 @@ def _write_single_pf(grid, pf, model_name, data_dirs, pf_num, export_pf_results,
                 # than what has already been allocated
                 Q_machine = Q_gen_bus / n_gens
             else:
-
                 Q_machine = Q_mach_min + ((Q_gen_bus - Q_tot_min) / (Q_tot_max - Q_tot_min + EPS)) * (Q_mach_max - Q_mach_min)
 
         gen_Q.append(Q_machine)
