@@ -4,8 +4,9 @@ SMIB Tutorial: OpenIPSL Model Assembly and Power Flow Integration with GridCal
 **Authors:** [Sergio A. Dorado-Rojas](https://sergio-dorado.github.io) (sergio.dorado.rojas@gmail.com), [Giuseppe Laera](https://www.linkedin.com/in/giuslaera), [Marcelo de Castro Fernandes](https://www.linkedin.com/in/marcelo-de-castro-615570b3) and [Luigi Vanfretti](https://faculty.rpi.edu/node/36204) (luigi.vanfretti@gmail.com)
 
 ### Cite this work :innocent: :thumbsup:
-> This work has been submitted to the International Modelica Conference 2021.
-> Paper citation information will become available upon submission response
+This work will be presented at [The 14th International Modelica Conference](https://2021.international.conference.modelica.org/). Please cite it if you find it useful.
+
+> Dorado-Rojas, S. A., Laera, G., de Castro Fernandes, M., Bogodorova, T., & Vanfretti, L. (2021). Power Flow Record Structures to Initialize OpenIPSL Phasor Time-Domain Simulations with Python.
 
 This repo contains an implementation of the Single Machine Infinite Bus (SMIB) system developed with the Open Instance Power System Library ([OpenIPSL](https://github.com/OpenIPSL/OpenIPSL)). The Python code to generate the power flow records for the models can be found in [pf2rec](/docs/pf2rec). Also available are the SMIB models on the [1.5.0 release](/models/_old/SMIB) and the [2.0.0 version](/models/_new/SMIB) of the library
 
