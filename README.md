@@ -1,10 +1,10 @@
 SMIB Tutorial: OpenIPSL Model Assembly and Power Flow Integration with GridCal
 ===================================
 
-**Authors:** [Sergio A. Dorado-Rojas](https://sergio-dorado.github.io) (sergio.dorado.rojas@gmail.com), [Giuseppe Laera](https://www.linkedin.com/in/giuslaera), [Marcelo de Castro Fernandes](https://www.linkedin.com/in/marcelo-de-castro-615570b3) and [Luigi Vanfretti](https://faculty.rpi.edu/node/36204) (luigi.vanfretti@gmail.com)
+**Authors:** [Sergio A. Dorado-Rojas](https://sergio-dorado.github.io) (sergio.dorado.rojas@gmail.com), [Giuseppe Laera](https://www.linkedin.com/in/giuslaera), [Marcelo de Castro Fernandes](https://www.linkedin.com/in/marcelo-de-castro-615570b3), [Dr. Tetiana Bogodorova](https://www.linkedin.com/in/tetiana-bogodorova-ph-d-20711763/), and [Dr. Luigi Vanfretti](https://faculty.rpi.edu/node/36204) (luigi.vanfretti@gmail.com)
 
 ### Cite this work :innocent: :thumbsup:
-This work will be presented at [The 14th International Modelica Conference](https://2021.international.conference.modelica.org/). Please cite it if you find it useful.
+This work was accepted and presented at [The 14th International Modelica Conference](https://2021.international.conference.modelica.org/). Please cite it if you find it useful.
 
 > Dorado-Rojas, S. A., Laera, G., de Castro Fernandes, M., Bogodorova, T., & Vanfretti, L. (2021). Power Flow Record Structures to Initialize OpenIPSL Phasor Time-Domain Simulations with Python.
 
